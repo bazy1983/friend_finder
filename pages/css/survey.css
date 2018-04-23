@@ -1,0 +1,22 @@
+
+.stars{
+    position: relative;
+    font-size: 28px;
+}
+
+.stars .blackstars{
+position: absolute;
+top: 0px;
+left: 0px;
+}
+
+.stars .goldenstars{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #FFD700;
+}
+
+.disabled{
+    pointer-events: none;
+}
