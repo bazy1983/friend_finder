@@ -1,0 +1,44 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    background: #fcdb83;
+}
+
+.intro{
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+.wrapper {
+    margin: auto;
+    width: 95vw;
+    min-height: 500px;
+    box-shadow: 5px 5px 13px #000;
+    overflow: hidden;
+    
+}
+
+.wrapper .left {
+    width: 48%;
+    min-height: 500px;
+    background: #76aed0;
+    float: left;
+}
+
+.wrapper .left:after{
+    left: 100%;
+    top: -17.5px;
+    content: "";
+    border-bottom: 500px solid #76aed0;
+    border-left: 0px solid #76aed0;
+    border-right: 60px solid transparent;
+    position: relative;
+}
+
+.wrapper .right {
+    width: 52%;
+    min-height: 500px;
+    background: #5dbf5a;
+    float: left;
+}

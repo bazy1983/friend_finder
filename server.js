@@ -18,6 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+//to bring all static files
+app.use(express.static(path.join(__dirname, 'pages')));
+
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/pages/index.html'));
   })
