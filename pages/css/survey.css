@@ -1,3 +1,50 @@
+body{
+    background: #fcdb83;
+    width: 98vw;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+label{
+    font-size: 20px;
+}
+
+input{
+    width: 30%;
+    margin-right: 20px;
+    height: 28px;
+    font-size: 20px;
+    box-shadow: 5px 5px 10px #999;
+}
+
+.inputs{
+    text-align: center;
+}
+
+.q{
+    margin-top: 0px;
+    border: 1px solid #000;
+    min-height: 176px;
+    border-radius: 15px;
+    padding: 0px 10px;
+    background: #50aca8;
+    box-shadow: 5px 5px 13px #000;
+}
+
+
+p{
+    font-size: 20px;
+}
+
+.container{
+    width: 90vw;
+    margin: auto;
+}
 
 .stars{
     position: relative;
@@ -19,4 +66,18 @@ left: 0px;
 
 .disabled{
     pointer-events: none;
+}
+
+.btn {
+    text-align: center;
+}
+
+button{
+    width: 300px;
+    height: 50px;
+    background: #50aca8;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }
