@@ -16,6 +16,7 @@ body{
     min-height: 500px;
     box-shadow: 5px 5px 13px #000;
     overflow: hidden;
+    font-family: 'Lobster', cursive;
     
 }
 
@@ -26,13 +27,13 @@ body{
     float: left;
 }
 
-.wrapper .left:after{
+.wrapper .left:before{
     left: 100%;
-    top: -17.5px;
+    top: -19.5px;
     content: "";
     border-bottom: 500px solid #76aed0;
     border-left: 0px solid #76aed0;
-    border-right: 60px solid transparent;
+    border-right: 75px solid transparent;
     position: relative;
 }
 
@@ -41,4 +42,19 @@ body{
     min-height: 500px;
     background: #5dbf5a;
     float: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+.content{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 20%;
+    color: #000;
+}
+
+i{
+    font-size: 100px;
 }

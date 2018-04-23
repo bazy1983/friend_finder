@@ -24,6 +24,10 @@ app.use(express.static(path.join(__dirname, 'pages')));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/pages/index.html'));
   })
+
+  app.get('/survey', function (req, res) {
+    res.sendFile(path.join(__dirname + '/pages/survey.html'));
+  })
    
   app.listen(3000)
   console.log("server is alive")
