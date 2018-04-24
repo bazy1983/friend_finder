@@ -5,9 +5,11 @@ body{
     padding: 0px;
 }
 
+
 h1{
     text-align: center;
     font-family: 'Lobster', cursive;
+    animation: elesticBand 1s infinite;
 }
 
 label{
@@ -44,6 +46,8 @@ p{
 .container{
     width: 90vw;
     margin: auto;
+    overflow: hidden;
+    padding: 0px 10px;
 }
 
 .stars{
@@ -80,4 +84,27 @@ button{
     font-weight: bold;
     margin-bottom: 30px;
     border-radius: 5px;
+}
+
+
+@keyframes elesticBand {
+    0%, 85%, 100% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scaleX(1.7) scaleY(0.7);
+    }
+
+    55% {
+       transform: scaleX(0.7) scaleY(1.3);
+    }
+
+    70% {
+        transform: scaleX(1.3) scaleY(0.85);
+    }
+
+    80% {
+        transform: scaleX(0.9) scaleY(1.1);
+    }
 }

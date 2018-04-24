@@ -21,6 +21,7 @@ function isValid() {
     for (var i = 0; i < results.length; i++) {
         if (results[i].attributes.data.value === "0") validInput = false;
     }
+    if ($("#name").val()==="" || $("#photo").val()==="") validInput = false;
     return validInput;
 }
 
@@ -35,6 +36,25 @@ $("#photo").on("change", function(){
 
 $("button").on("click", function () {
 
-    console.log(isValid())
+    // console.log(isValid())
+
+    if(isValid()){ //if all questions answered
+         
+        let answers = $(".stars");
+        let dataValues = [];
+        for (let i = 0; i < answers.length; i++){
+            dataValues.push(answers[i].attributes.data.value) //getting answer values to array
+        }
+
+        let person = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
+            scores: dataValues
+        };
+
+        $.post("/api/friends", person, function(data){
+            console.log(data)
+        })
+    }
 
 })
