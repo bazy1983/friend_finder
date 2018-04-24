@@ -12,50 +12,63 @@ $(document).ready(function () {
         //disable stars div and change data attribute value 
         $(this.parentNode.parentNode).addClass("disabled").attr("data", clickValue)
     })
-})
 
-function isValid() {
-    var validInput = true;
-    var results = $(".stars");
-    var resultArr = [];
-    for (var i = 0; i < results.length; i++) {
-        if (results[i].attributes.data.value === "0") validInput = false;
+
+    function isValid() {
+        var validInput = true;
+        var results = $(".stars");
+        var resultArr = [];
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].attributes.data.value === "0") validInput = false;
+        }
+        if ($("#name").val() === "" || $("#photo").val() === "") validInput = false;
+        return validInput;
     }
-    if ($("#name").val()==="" || $("#photo").val()==="") validInput = false;
-    return validInput;
-}
 
-$("#photo").on("change", function(){
-    var input = $("#photo").val().trim();
-    if(input.search(".jpg") != -1 || input.search(".png") != -1){
-        console.log("good input")
-    } else {
-        console.log("bad input")
-    }
-})
+    $("#photo").on("change", function () {
+        var input = $("#photo").val().trim();
+        if (input.search(".jpg") != -1 || input.search(".png") != -1) {
+            console.log("good input")
+        } else {
+            console.log("bad input")
+        }
+    })
 
-$("button").on("click", function () {
+    $("button").on("click", function () {
 
-    // console.log(isValid())
+        // console.log(isValid())
 
-    if(isValid()){ //if all questions answered
-         
-        let answers = $(".stars");
-        let dataValues = [];
-        for (let i = 0; i < answers.length; i++){
-            dataValues.push(answers[i].attributes.data.value) //getting answer values to array
+        if (isValid()) { //if all questions answered
+
+            let answers = $(".stars");
+            let dataValues = [];
+            for (let i = 0; i < answers.length; i++) {
+                dataValues.push(answers[i].attributes.data.value) //getting answer values to array
+            }
+
+            let person = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: dataValues
+            };
+            console.log("client side");
+            console.log(person);
+            $.post("/api/friends", person, function (data) {
+                //apendng stuff to the page
+                $(".photo").empty();
+                $(".photo").append($("<p>").html(data.name));
+                $(".photo").append($("<img>").attr({
+                    src : data.photo,
+                    alt : data.photo
+                }));
+                $(".modal").fadeIn();
+            })
         }
 
-        let person = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: dataValues
-        };
-        console.log("client side");
-        console.log(person);
-        $.post("/api/friends", person, function(data){
-            console.log(data)
-        })
-    }
+    })
+
+    $(".fa-times").on("click", function(){
+        $(".modal").fadeOut();
+    })
 
 })

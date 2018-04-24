@@ -42,6 +42,20 @@ body{
     min-height: 500px;
     background: #5dbf5a;
     float: left;
+    overflow: hidden;
+}
+
+.right .underconstruction{
+    position: absolute;
+    right: 57px;
+    top: 337px;
+    width: 464px;
+    text-align: center;
+    font-size: 35px;
+    transform: rotate(43deg);
+    border: 3px solid #50aca8;
+    border-radius: 10px;
+    background: #f15e4d;
 }
 
 a{

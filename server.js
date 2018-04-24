@@ -13,7 +13,7 @@ fs.readFile(path.join(__dirname + '/friends.json'), 'utf8', function (err, data)
 });
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -38,17 +38,21 @@ app.get('/api/friends', function (req, res) {
 app.post("/api/friends", function (req, res) {
 
   let userScore = 0;
-  for (let i = 0; i<req.body["scores[]"].length; i++){
-    let score = parseInt(req.body["scores[]"][i]);
+  //user score sumation
+  for (let i = 0; i < req.body.scores.length; i++) {
+    let score = parseInt(req.body.scores[i]);
     userScore += score;
   };
 
-  res.send(req.body)
+let index = matchFriends(userScore);
 
-  //writejson(req.body) //write new user info
-})
+  res.send(personInServer[index])
+  
+ // writejson(req.body) //write new user info
+}) //end of post request
+
 app.listen(3000)
-console.log("server is alive")
+console.log("server is live")
 
 
 function writejson(userReq) {
@@ -58,4 +62,24 @@ function writejson(userReq) {
     if (err) throw err;
     console.log("added new friend!")
   });
+}
+
+function matchFriends(userScore) {
+  let closestScore = 50;
+  let friendIndex;
+  for (let i = 0; i < personInServer.length; i++) {
+    let frinedScore = 0;
+    for (let x = 0; x < personInServer[i].scores.length; x++) {
+      let unitScore = parseInt(personInServer[i].scores[x]);
+      frinedScore += unitScore;
+    };
+
+    let diff = Math.abs(userScore - frinedScore);
+
+    if (diff < closestScore){
+      closestScore = diff;
+      friendIndex = i;
+    }
+  }
+  return friendIndex;
 }

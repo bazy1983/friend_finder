@@ -5,6 +5,69 @@ body{
     padding: 0px;
 }
 
+.modal {
+    position: fixed;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 400px);
+    width: 800px;
+    height: 500px;
+    background: #fff;
+    border: 5px solid #50aca8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    z-index: 2;
+    display: none;
+}
+
+.modal .modalHeader{
+    background: #50aca8;
+    color: #000;
+    padding: 5px;
+    margin: 0;
+}
+
+.modal .modalHeader h2{
+    padding: 0;
+    margin: 0;
+}
+
+.modal .modalHeader i{
+    position: absolute;
+    top: 6px;
+    left: 773px;
+    font-size: 21px;
+    transition: 0.5s;
+}
+
+.modal .modalHeader i:hover{
+    transform: rotate(360deg)
+}
+
+.modal .modalBody{
+    margin: auto;
+    width: 98%;
+    height: 86%;
+    margin-top: 2%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal .modalBody .text, .modal .modalBody .photo {
+    width: 50%;
+    height: 95%;
+    float: left;
+}
+
+.modal .modalBody .text p, .modal .modalBody .photo p {
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    text-align: center;
+}
+
+.modal .modalBody .text{
+    margin-top: 150px;
+}
 
 h1{
     text-align: center;
