@@ -43,7 +43,7 @@ app.post("/api/friends", function (req, res) {
     userScore += score;
   };
 
-  res.send("my score" + userScore)
+  res.send(req.body)
 
   //writejson(req.body) //write new user info
 })

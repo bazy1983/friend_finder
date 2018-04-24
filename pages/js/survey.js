@@ -51,7 +51,8 @@ $("button").on("click", function () {
             photo: $("#photo").val().trim(),
             scores: dataValues
         };
-
+        console.log("client side");
+        console.log(person);
         $.post("/api/friends", person, function(data){
             console.log(data)
         })
