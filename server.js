@@ -25,8 +25,10 @@ app.use(express.static(path.join(__dirname, 'pages')));
 
 
 
-app.listen(3000)
-console.log("server is live")
+app.listen(process.env.PORT || 3000, function(){
+
+  console.log("server is live")
+})
 
 // write user's information
 function writejson(userReq) {
