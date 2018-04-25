@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var fs = require("fs")
 
-
+require("./routes")(app)
 //reading friend json file
 var personInServer;
 fs.readFile(path.join(__dirname + '/friends.json'), 'utf8', function (err, data) {
@@ -23,38 +23,12 @@ app.use(express.static(path.join(__dirname, 'pages')));
 
 
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/pages/index.html'));
-})
 
-app.get('/survey', function (req, res) {
-  res.sendFile(path.join(__dirname + '/pages/survey.html'));
-})
-
-app.get('/api/friends', function (req, res) {
-  res.send(personInServer);
-})
-
-app.post("/api/friends", function (req, res) {
-
-  let userScore = 0;
-  //user score sumation
-  for (let i = 0; i < req.body.scores.length; i++) {
-    let score = parseInt(req.body.scores[i]);
-    userScore += score;
-  };
-
-let index = matchFriends(userScore);
-
-  res.send(personInServer[index])
-  
- // writejson(req.body) //write new user info
-}) //end of post request
 
 app.listen(3000)
 console.log("server is live")
 
-
+// write user's information
 function writejson(userReq) {
   personInServer.push(userReq);
   let myjson = JSON.stringify(personInServer)
@@ -64,6 +38,7 @@ function writejson(userReq) {
   });
 }
 
+//find closest match to user's score
 function matchFriends(userScore) {
   let closestScore = 50;
   let friendIndex;
