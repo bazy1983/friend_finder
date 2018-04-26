@@ -6,7 +6,7 @@ var fs = require("fs");
 const Akinator = require('akinator');
 
 require("./routes.js")(app)
-require("./akinatorApi.js")(app)
+
 //reading friend json file
 var personInServer;
 fs.readFile(path.join(__dirname + '/friends.json'), 'utf8', function (err, data) {

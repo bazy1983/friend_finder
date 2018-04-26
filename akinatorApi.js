@@ -14,46 +14,51 @@ const akinator = new Akinator();
 
 
 
-function akinatorFunc(request, res){
-    
+
+
+let akiAnswer;
+function akinatorFunc(req, res){
+
+akinator.on('question', ({ question, answers, answer, step }) => {
     let akinatorData;
+    akiAnswer = "";
+    akinatorData = {
+        question: question,
+        answers: answers
+    };
+    res.send(akinatorData)
+    res.end(); 
 
-    akinator.on('question', ({ question, answers, answer, step }) => {
-        akinatorData = {
-            question : question,
-            answers : answers
-        };
-        res.send(akinatorData)
+    // inquirer.prompt({
+    //     type: 'list',
+    //     name: 'a',
+    //     message: `(${+step + 1}) ${question}`,
+    //     choices: answers.map((a, i) => ({
+    //         name: a.answer,
+    //         value: i,
+    //     })),
+    // }).then(({ a }) => answer(a));
+    akiAnswer = answer
+});
 
-        inquirer.prompt({
-            type: 'list',
-            name: 'a',
-            message: `(${+step + 1}) ${question}`,
-            choices: answers.map((a, i) => ({
-                name: a.answer,
-                value: i,
-            })),
-        }).then(({ a }) => answer(a));
-    });
-    
-    akinator.on('guess', ({ guess, name, description }) => {
-        inquirer.prompt({
-            type: 'confirm',
-            name: 'a',
-            message: `I think of ${bold(name)}, ${description}`,
-        }).then(({ a }) => guess(a));
-    });
-    
-    akinator.on('end', (win) => {
-        if (win) console.log('Great! Guessed right one more time. I love playing with you!');
-        process.reallyExit(0);
-    });
-    
-    process.on('exit', () => {
-        console.log('Bye!');
-    });
+akinator.on('guess', ({ guess, name, description }) => {
+    inquirer.prompt({
+        type: 'confirm',
+        name: 'a',
+        message: `I think of ${bold(name)}, ${description}`,
+    }).then(({ a }) => guess(a));
+});
 
-    
+akinator.on('end', (win) => {
+    if (win) console.log('Great! Guessed right one more time. I love playing with you!');
+    process.reallyExit(0);
+});
+
+process.on('exit', () => {
+    console.log('Bye!');
+});
+
+
 }
 
 //akinator.start();
@@ -79,14 +84,16 @@ module.exports = function (app) {
 
     //akinator game start
     app.get("/api/akinator", function (req, res) {
+        //process.reallyExit(0);
         akinator.start();
-        akinatorFunc("" , res)
+        akinatorFunc("", res)
     })
 
-    app.post("/api/akinator-answer", function(req, res){
-        clientReq = req.body.answer
-        console.log(typeof +clientReq);
-        //akinatorFunc(clientReq , res)
-        res.send(clientReq)
+    app.post("/api/akinator-answer", function (req, res) {
+        response = res;
+        clientReq = parseInt(req.body.answer);
+        akiAnswer(clientReq)
+        akinatorFunc(req, res)
+        //res.send(clientReq)
     })
 }
