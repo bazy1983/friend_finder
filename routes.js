@@ -19,6 +19,10 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/pages/survey.html'));
   })
 
+  app.get('/character-guess', function (req, res) {
+    res.sendFile(path.join(__dirname + '/pages/guess.html'));
+  })
+
 
   //sending all users json to the client
   app.get('/api/friends', function (req, res) {

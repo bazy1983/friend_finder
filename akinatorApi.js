@@ -68,32 +68,3 @@ function bold(text) {
 }
 
 
-module.exports = function (app) {
-    // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: true }));
-
-    // parse application/json
-    app.use(bodyParser.json());
-
-
-
-    //akinator page get request
-    app.get('/character-guess', function (req, res) {
-        res.sendFile(path.join(__dirname + '/pages/guess.html'));
-    })
-
-    //akinator game start
-    app.get("/api/akinator", function (req, res) {
-        //process.reallyExit(0);
-        akinator.start();
-        akinatorFunc("", res)
-    })
-
-    app.post("/api/akinator-answer", function (req, res) {
-        response = res;
-        clientReq = parseInt(req.body.answer);
-        akiAnswer(clientReq)
-        akinatorFunc(req, res)
-        //res.send(clientReq)
-    })
-}
