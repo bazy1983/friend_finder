@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bazy1983/friend_finder#readme",
   "dependencies": {
+    "akinator": "^1.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3"
   }

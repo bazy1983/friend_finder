@@ -52,7 +52,8 @@ $(document).ready(function () {
                 scores: dataValues
             };
             console.log("client side");
-            console.log(person);
+
+            // posting user's information and getting matching friend
             $.post("/api/friends", person, function (data) {
                 //apendng stuff to the page
                 $(".photo").empty();
@@ -63,6 +64,8 @@ $(document).ready(function () {
                 }));
                 $(".modal").fadeIn();
             })
+        } else {
+            alert("please fill in all fields")
         }
 
     })
