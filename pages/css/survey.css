@@ -69,6 +69,10 @@ body{
     margin-top: 150px;
 }
 
+.modal .modalBody img {
+    width: 90%
+}
+
 h1{
     text-align: center;
     font-family: 'Lobster', cursive;
