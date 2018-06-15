@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link rel="stylesheet" href="./css/guess.css">
+
     <title>Guess game</title>
     <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <img src="https://holography.byu.edu/resources/images/under-construction.png" alt="under-construction">
-    <!--  
-    <button id = "startAki">start</button>
+    <div class="container">
+        <!-- <img src="https://holography.byu.edu/resources/images/under-construction.png" alt="under-construction"> -->
+       <div class="start text-center">
+            <p>Please pick a number from 1 to 60...</p>
+            <p class = "button">OK!</p>
+       </div>
+       <div class="cards row hidden text-center">
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card1.jpg" alt="1">
+           </div>
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card2.jpg" alt="2">
+           </div>
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card4.jpg" alt="4">
+           </div>
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card8.jpg" alt="8">
+           </div>
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card16.jpg" alt="16">
+           </div>
+           <div class="col-md-4">
+               <img src="https://bazy1983.github.io/json/card32.jpg" alt="32">
+           </div>
+       </div>
 
-        <div class="akinatorbody">
-
-        </div>-->
+       <div class="results start">
+           <p class = "hidden">Results: <span id = "final"></span></p>
+       </div>
+    </div>
 
     <script src="./js/akinator.js"></script>
 </body>
